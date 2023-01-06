@@ -54,6 +54,7 @@ public class GameController : MonoBehaviour
     
     private void ReSpawn()
     {
+        _agent.transform.position = new Vector3(Random.Range(-3, +3),  Random.Range(-3f, 3f));
         _reward.transform.position = new Vector3(Random.Range(-3, +3),  Random.Range(-3f, 3f));
         _timeExpired = Time.time + timeout;
     }
