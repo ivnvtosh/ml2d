@@ -26,12 +26,12 @@ public class Vector
         get
         {
             var c = new Matrix(size, 1);
-
+            
             for (var i = 0; i < size; i += 1)
             {
                 c[i, 0] = _data[i];
             }
-
+            
             return c;
         }
     }
@@ -39,7 +39,7 @@ public class Vector
     public static Vector Random(int size)
     {
         var a = new Vector(size);
-
+        
         for (var i = 0; i < size; i += 1)
         {
             a[i] = UnityEngine.Random.Range(-1.0f, 1.0f);
@@ -51,7 +51,7 @@ public class Vector
     public override string ToString()
     {
         var description = "";
-
+        
         description += "size: " + size + "\n";
         for (var i = 0; i < size - 1; i += 1)
         {
@@ -66,12 +66,12 @@ public class Vector
     {
         var size = b.size;
         var c = new Vector(size);
-
+        
         for (var i = 0; i < size; i += 1)
         {
             c[i] = k * b[i];
         }
-
+        
         return c;
     }
     
@@ -81,15 +81,15 @@ public class Vector
         {
             throw new System.ArgumentException();
         }
-
+        
         var size = a.size;
         var c = new Vector(size);
-
+        
         for (var i = 0; i < size; i += 1)
         {
             c[i] = a[i] + b[i];
         }
-
+        
         return c;
     }
     
@@ -99,15 +99,15 @@ public class Vector
         {
             throw new System.ArgumentException();
         }
-
+        
         var size = a.size;
         var c = new Vector(size);
-
+        
         for (var i = 0; i < size; i += 1)
         {
             c[i] = a[i] - b[i];
         }
-
+        
         return c;
     }
     
@@ -117,15 +117,15 @@ public class Vector
         {
             throw new System.ArgumentException();
         }
-
+        
         var size = a.size;
         var c = new Vector(size);
-
+        
         for (var i = 0; i < size; i += 1)
         {
             c[i] = a[i] * b[i];
         }
-
+        
         return c;
     }
     
@@ -135,14 +135,14 @@ public class Vector
         {
             return false;
         }
-
+        
         var b = (Vector) obj;
         
         if (size != b.size)
         {
             throw new System.ArgumentException();
         }
-
+        
         for (var i = 0; i < size; i += 1)
         {
             if (UnityEngine.Mathf.Approximately(_data[i], b[i]) == false)
@@ -150,7 +150,7 @@ public class Vector
                 return false;
             }
         }
-
+        
         return true;
     }
 

@@ -22,7 +22,7 @@ public class Matrix
         get
         {
             var c = new Matrix(n, m);
-
+            
             for (var i = 0; i < m; i += 1)
             {
                 for (var j = 0; j < n; j += 1)
@@ -30,7 +30,7 @@ public class Matrix
                     c[j, i] = _data[i, j];
                 }
             }
-
+            
             return c;
         }
     }
@@ -38,7 +38,7 @@ public class Matrix
     public static Matrix Random(int m, int n)
     {
         var a = new Matrix(m, n);
-
+        
         for (var i = 0; i < m; i += 1)
         {
             for (var j = 0; j < n; j += 1)
@@ -53,7 +53,7 @@ public class Matrix
     public override string ToString()
     {
         var description = "";
-
+        
         description += "m: " + m + "\n";
         description += "n: " + n + "\n";
         for (var i = 0; i < m; i += 1)
@@ -62,10 +62,10 @@ public class Matrix
             {
                 description += _data[i, j] + " ";
             }
-
+            
             description += _data[i, n - 1] + "\n";
         }
-
+        
         return description;
     }
 
@@ -74,7 +74,7 @@ public class Matrix
         var m = a.m;
         var n = a.n;
         var c = new Matrix(m, n);
-
+        
         for (var i = 0; i < m; i += 1)
         {
             for (var j = 0; j < n; j += 1)
@@ -82,32 +82,28 @@ public class Matrix
                 c[i, j] = k * a[i, j];
             }
         }
-
+        
         return c;
     }
     
-    public static Matrix operator *(Matrix a, Vector b)
+    public static Vector operator *(Matrix a, Vector b)
     {
         if (a.n != b.size)
         {
             throw new System.ArgumentException();
         }
         
-        var m = a.m;
-        var n = b.size;
-        var c = new Matrix(m, n);
-
-        for (var i = 0; i < m; i += 1)
+        var size = b.size;
+        var c = new Vector(size);
+        
+        for (var i = 0; i < size; i += 1)
         {
-            for (var j = 0; j < n; j += 1)
+            for (var k = 0; k < size; k += 1)
             {
-                for (var k = 0; k < a.n; k += 1)
-                {
-                    c[i, j] += a[i, k] * b[k];
-                }
+                c[i] += a[i, k] * b[k];
             }
         }
-
+        
         return c;
     }
     
@@ -121,7 +117,7 @@ public class Matrix
         var m = a.m;
         var n = a.n;
         var c = new Matrix(m, n);
-
+        
         for (var i = 0; i < m; i += 1)
         {
             for (var j = 0; j < n; j += 1)
@@ -129,7 +125,7 @@ public class Matrix
                 c[i, j] = a[i, j] + b[i, j];
             }
         }
-
+        
         return c;
     }
     
@@ -143,7 +139,7 @@ public class Matrix
         var m = a.m;
         var n = a.n;
         var c = new Matrix(m, n);
-
+        
         for (var i = 0; i < m; i += 1)
         {
             for (var j = 0; j < n; j += 1)
@@ -151,7 +147,7 @@ public class Matrix
                 c[i, j] = a[i, j] - b[i, j];
             }
         }
-
+        
         return c;
     }
 
@@ -165,7 +161,7 @@ public class Matrix
         var m = a.m;
         var n = b.n;
         var c = new Matrix(m, n);
-
+        
         for (var i = 0; i < m; i += 1)
         {
             for (var j = 0; j < n; j += 1)
@@ -176,7 +172,7 @@ public class Matrix
                 }
             }
         }
-
+        
         return c;
     }
     
@@ -186,14 +182,14 @@ public class Matrix
         {
             return false;
         }
-
+        
         var b = (Matrix) obj;
-
+        
         if (m != b.m || n != b.n)
         {
             throw new System.ArgumentException();
         }
-
+        
         for (var i = 0; i < m; i += 1)
         {
             for (var j = 0; j < n; j += 1)
@@ -204,7 +200,7 @@ public class Matrix
                 }
             }
         }
-
+        
         return true;
     }
 
