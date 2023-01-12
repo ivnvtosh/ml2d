@@ -86,7 +86,7 @@ public class Matrix
         return c;
     }
     
-    public static Vector operator *(Matrix a, Vector b)
+    public static Vector operator *(Vector b, Matrix a)
     {
         if (a.n != b.size)
         {
@@ -99,6 +99,27 @@ public class Matrix
         for (var i = 0; i < size; i += 1)
         {
             for (var k = 0; k < size; k += 1)
+            {
+                c[i] += b[k] * a[k, i];
+            }
+        }
+        
+        return c;
+    }
+    
+    public static Vector operator *(Matrix a, Vector b)
+    {
+        if (a.n != b.size)
+        {
+            throw new System.ArgumentException();
+        }
+        
+        var size = a.m;
+        var c = new Vector(size);
+        
+        for (var i = 0; i < size; i += 1)
+        {
+            for (var k = 0; k < b.size; k += 1)
             {
                 c[i] += a[i, k] * b[k];
             }
