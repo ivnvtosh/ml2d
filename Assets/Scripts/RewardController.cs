@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class RewardController : MonoBehaviour
 {
-    private GameController _gameController;
+    private Environment _environment;
 
     private void Start()
     {
         var gameObject = GameObject.FindWithTag("GameController");
-        _gameController = gameObject.GetComponent<GameController>();
+        _environment = gameObject.GetComponent<Environment>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Agent"))
         {
-            _gameController.Success();
+            // _environment.isCollided = true;
         }
     }
 }
