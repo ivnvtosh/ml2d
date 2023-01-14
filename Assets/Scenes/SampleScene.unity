@@ -182,9 +182,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5646a7b14306456da889c6a296154622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layers: 400000008000000008000000
+  layers: 200000008000000004000000
   learningRate: 0.0001
-  capacity: 2048
+  _gamma: 0.95
+  _epsilon: 1
+  _epsilonMin: 0.001
+  _epsilonDecay: 0.999
+  capacity: 10000
   batchSize: 32
 --- !u!114 &73785822
 MonoBehaviour:
@@ -201,9 +205,8 @@ MonoBehaviour:
   agentPrefab: {fileID: 1407783898292004189, guid: b3649576e01e5436ea6272d87d7bf460, type: 3}
   rewardPrefab: {fileID: 4234531242040378919, guid: 43d767d9b980f47a3beb2dc3fb33f0d1, type: 3}
   agentSpeed: 4
-  timeout: 6
-  numOfSensors: 64
-  isCollided: 0
+  timeout: 2
+  numOfSensors: 32
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0

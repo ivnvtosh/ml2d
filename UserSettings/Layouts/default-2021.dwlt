@@ -119,7 +119,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 5621
+  controlID: 4388
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 5668
+  controlID: 4389
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 5669
+  controlID: 4390
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -187,7 +187,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 235
+    width: 235.5
     height: 503.5
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
@@ -211,9 +211,9 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 235
+    x: 235.5
     y: 0
-    width: 714.5
+    width: 714
     height: 503.5
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
@@ -269,8 +269,8 @@ MonoBehaviour:
     y: 0
     width: 490.5
     height: 850
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -297,9 +297,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 235
+    x: 235.5
     y: 30
-    width: 712.5
+    width: 712
     height: 482.5
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -557,9 +557,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -2.7865171, y: 0.9375396, z: -0.019614413}
+    m_Target: {x: -3.1988692, y: -1.0301075, z: 0.08089254}
     speed: 2
-    m_Value: {x: -2.7865171, y: 0.9375396, z: -0.019614413}
+    m_Value: {x: -3.1988692, y: -1.0301075, z: 0.08089254}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -610,9 +610,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 13.969287
+    m_Target: 3.918556
     speed: 2
-    m_Value: 13.969287
+    m_Value: 3.918556
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -659,7 +659,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 30
-    width: 234
+    width: 234.5
     height: 482.5
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -668,9 +668,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: b6faffff
+      m_SelectedIDs: 747e0000
+      m_LastClickedID: 32372
+      m_ExpandedIDs: e0abffff26acffff9aadffff5eafffffa4afffff18b1ffff6ab6ffffb0b6ffffd2b6ffff78b7ffffbeb7ffff32b9ffffa4c0ffffeac0ffff5ec2ffff2afbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -714,9 +714,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 235
+    x: 235.5
     y: 30
-    width: 712.5
+    width: 712
     height: 482.5
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_ShowGizmos: 0
   m_TargetDisplay: 0
   m_ClearColor: {r: 0, g: 0, b: 0, a: 0}
-  m_TargetSize: {x: 712.5, y: 461.5}
+  m_TargetSize: {x: 712, y: 461.5}
   m_TextureFilterMode: 0
   m_TextureHideFlags: 61
   m_RenderIMGUI: 1
@@ -743,8 +743,8 @@ MonoBehaviour:
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -178.125
-    m_HBaseRangeMax: 178.125
+    m_HBaseRangeMin: -178
+    m_HBaseRangeMax: 178
     m_VBaseRangeMin: -115.375
     m_VBaseRangeMax: 115.375
     m_HAllowExceedBaseRangeMin: 1
@@ -764,23 +764,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 712.5
+      width: 712
       height: 461.5
     m_Scale: {x: 2, y: 2}
-    m_Translation: {x: 356.25, y: 230.75}
+    m_Translation: {x: 356, y: 230.75}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -178.125
+      x: -178
       y: -115.375
-      width: 356.25
+      width: 356
       height: 230.75
     m_MinimalGUI: 1
   m_defaultScale: 2
-  m_LastWindowPixelSize: {x: 1425, y: 965}
+  m_LastWindowPixelSize: {x: 1424, y: 965}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -827,22 +827,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: /Users/ivnvtosh/UnityProjects/ml2d
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8c5e0000
-    m_LastClickedID: 24204
-    m_ExpandedIDs: 00000000865e000000ca9a3b
+    m_SelectedIDs: dc5f0000
+    m_LastClickedID: 24540
+    m_ExpandedIDs: 00000000ca5f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -870,7 +870,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000865e000000ca9a3b
+    m_ExpandedIDs: 00000000ca5f000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -895,9 +895,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: 747e0000
+    m_LastClickedInstanceID: 32372
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -1024,7 +1024,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_Spl:
-    ID: 114
+    ID: 172
     splitterInitialOffset: 0
     currentActiveSplitter: -1
     realSizes:
@@ -1108,7 +1108,7 @@ MonoBehaviour:
       name: ml2d
       fullName: ml2d
       resultStatus: 1
-      duration: 0.0606045
+      duration: 0.0830737
       messages: 
       output: 
       stacktrace: 
@@ -1124,7 +1124,7 @@ MonoBehaviour:
       name: EditMode.dll
       fullName: /Users/ivnvtosh/UnityProjects/ml2d/Library/ScriptAssemblies/EditMode.dll
       resultStatus: 1
-      duration: 0.0364039
+      duration: 0.0624575
       messages: 
       output: 
       stacktrace: 
@@ -1140,7 +1140,7 @@ MonoBehaviour:
       name: Tests
       fullName: Tests
       resultStatus: 1
-      duration: 0.0357383
+      duration: 0.0619631
       messages: 
       output: 
       stacktrace: 
@@ -1156,7 +1156,7 @@ MonoBehaviour:
       name: EditMode
       fullName: Tests.EditMode
       resultStatus: 1
-      duration: 0.0320131
+      duration: 0.0582211
       messages: 
       output: 
       stacktrace: 
@@ -1172,7 +1172,7 @@ MonoBehaviour:
       name: MatrixTest
       fullName: Tests.EditMode.MatrixTest
       resultStatus: 1
-      duration: 0.0060976
+      duration: 0.0267679
       messages: 
       output: 
       stacktrace: 
@@ -1188,7 +1188,7 @@ MonoBehaviour:
       name: Addition
       fullName: Tests.EditMode.MatrixTest.Addition
       resultStatus: 1
-      duration: 0.0004257
+      duration: 0.0139398
       messages: 
       output: 
       stacktrace: 
@@ -1205,7 +1205,7 @@ MonoBehaviour:
       name: Multiplication_float_00
       fullName: Tests.EditMode.MatrixTest.Multiplication_float_00
       resultStatus: 1
-      duration: 0.0001715
+      duration: 0.0003351
       messages: 
       output: 
       stacktrace: 
@@ -1222,7 +1222,7 @@ MonoBehaviour:
       name: Multiplication_Matrix_00
       fullName: Tests.EditMode.MatrixTest.Multiplication_Matrix_00
       resultStatus: 1
-      duration: 0.0002035
+      duration: 0.0003282
       messages: 
       output: 
       stacktrace: 
@@ -1239,7 +1239,7 @@ MonoBehaviour:
       name: Multiplication_Vector_00
       fullName: Tests.EditMode.MatrixTest.Multiplication_Vector_00
       resultStatus: 1
-      duration: 0.0001139
+      duration: 0.0004161
       messages: 
       output: 
       stacktrace: 
@@ -1256,7 +1256,7 @@ MonoBehaviour:
       name: Subtraction
       fullName: Tests.EditMode.MatrixTest.Subtraction
       resultStatus: 1
-      duration: 0.0002206
+      duration: 0.0003093
       messages: 
       output: 
       stacktrace: 
@@ -1273,7 +1273,7 @@ MonoBehaviour:
       name: Transposed
       fullName: Tests.EditMode.MatrixTest.Transposed
       resultStatus: 1
-      duration: 0.0001033
+      duration: 0.0002332
       messages: 
       output: 
       stacktrace: 
@@ -1290,7 +1290,7 @@ MonoBehaviour:
       name: NeuralNetworkTests
       fullName: Tests.EditMode.NeuralNetworkTests
       resultStatus: 1
-      duration: 0.0274912
+      duration: 0.0216921
       messages: 
       output: 
       stacktrace: 
@@ -1302,11 +1302,11 @@ MonoBehaviour:
       parentId: 1018
       parentUniqueId: EditMode.dll/Tests/[EditMode][suite]
     - id: 1010
-      uniqueId: EditMode.dll/Tests/EditMode/NeuralNetworkTests/[EditMode][Tests.EditMode.NeuralNetworkTests.BackPropagation]
-      name: BackPropagation
-      fullName: Tests.EditMode.NeuralNetworkTests.BackPropagation
+      uniqueId: EditMode.dll/Tests/EditMode/NeuralNetworkTests/[EditMode][Tests.EditMode.NeuralNetworkTests.BackPropagation_00]
+      name: BackPropagation_00
+      fullName: Tests.EditMode.NeuralNetworkTests.BackPropagation_00
       resultStatus: 1
-      duration: 0.016004
+      duration: 0.0017276
       messages: 
       output: 
       stacktrace: 
@@ -1323,7 +1323,7 @@ MonoBehaviour:
       name: ForwardPropagation_00
       fullName: Tests.EditMode.NeuralNetworkTests.ForwardPropagation_00
       resultStatus: 1
-      duration: 0.0152047
+      duration: 0.0002861
       messages: 
       output: 
       stacktrace: 
@@ -1340,7 +1340,7 @@ MonoBehaviour:
       name: VectorTests
       fullName: Tests.EditMode.VectorTests
       resultStatus: 1
-      duration: 0.0043668
+      duration: 0.0050721
       messages: 
       output: 
       stacktrace: 
@@ -1356,7 +1356,7 @@ MonoBehaviour:
       name: Addition
       fullName: Tests.EditMode.VectorTests.Addition
       resultStatus: 1
-      duration: 0.0003562
+      duration: 0.0004313
       messages: 
       output: 
       stacktrace: 
@@ -1373,7 +1373,7 @@ MonoBehaviour:
       name: Multiplication_float_00
       fullName: Tests.EditMode.VectorTests.Multiplication_float_00
       resultStatus: 1
-      duration: 0.0001543
+      duration: 0.0001388
       messages: 
       output: 
       stacktrace: 
@@ -1390,7 +1390,7 @@ MonoBehaviour:
       name: Multiplication_Vector_00
       fullName: Tests.EditMode.VectorTests.Multiplication_Vector_00
       resultStatus: 1
-      duration: 0.0001524
+      duration: 0.0001228
       messages: 
       output: 
       stacktrace: 
@@ -1407,7 +1407,7 @@ MonoBehaviour:
       name: Subtraction
       fullName: Tests.EditMode.VectorTests.Subtraction
       resultStatus: 1
-      duration: 0.0001454
+      duration: 0.0001237
       messages: 
       output: 
       stacktrace: 
@@ -1424,7 +1424,7 @@ MonoBehaviour:
       name: Transposed
       fullName: Tests.EditMode.VectorTests.Transposed
       resultStatus: 1
-      duration: 0.0001407
+      duration: 0.0001554
       messages: 
       output: 
       stacktrace: 

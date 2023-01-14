@@ -12,7 +12,8 @@ public class GameController : MonoBehaviour
     
     private void Start()
     {
-       
+        Screen.fullScreen = false;
+        Application.runInBackground = true;
     }
     
     private void Awake()

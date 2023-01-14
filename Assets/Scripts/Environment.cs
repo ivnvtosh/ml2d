@@ -38,19 +38,24 @@ using Random = UnityEngine.Random;
     }
     
     private Rigidbody2D rb;
-    private Vector2 direction;
     
-    public (Vector nextState, float reward) Step(Vector action)
+    public (Vector nextState, float reward) Step(int action)
     {
-        // action -> direction
+        var direction = action switch
+        {
+            0 => Vector2.up,
+            1 => Vector2.down,
+            2 => Vector2.left,
+            3 => Vector2.right,
+            _ => Vector2.zero
+        };
         
-        var position = _agent.transform.position;
+        rb.MovePosition(rb.position + direction * agentSpeed * Time.fixedDeltaTime);
+
+        var position = rb.position;
         var state = _sensor.GetData(position);
         
         var reward = -0.1f;
-        
-        direction.x = Input.GetAxisRaw("Horizontal");
-        direction.y = Input.GetAxisRaw("Vertical");
         
         var mixX = position.x - 0.25;
         var maxX = position.x + 0.25;
@@ -84,8 +89,8 @@ using Random = UnityEngine.Random;
     {
         Debug.Log("fail");
         _fail += 1;
-        _agent.transform.position = new Vector3(Random.Range(-3, +3),  Random.Range(-3f, 3f));
-        _reward.transform.position = new Vector3(Random.Range(-3, +3),  Random.Range(-3f, 3f));
+        _agent.transform.position = new Vector3(Random.Range(-0.5f, +0.5f),  Random.Range(-0.5f, 0.5f));
+        _reward.transform.position = new Vector3(Random.Range(-0.5f, +0.5f),  Random.Range(-0.5f, 0.5f));
         _timeExpired = Time.time + timeout;
     }
 }

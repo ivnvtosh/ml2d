@@ -5,7 +5,7 @@ using System;
  */
 public class NeuralNetwork
 {
-    public enum ActivationFunction
+    public enum Activation
     {
         Relu
     }
@@ -42,6 +42,26 @@ public class NeuralNetwork
         
         return c;
     }
+    
+    public static Vector Softmax(Vector a)
+    {
+        var c = new Vector(a.size);
+        var sum = 0.0f;
+        
+        for (var i = 0; i < a.size; i += 1)
+        {
+            c[i] = UnityEngine.Mathf.Exp(a[i]);
+            sum += c[i];
+        }
+
+        for (var i = 0; i < a.size; i += 1)
+        {
+            c[i] /= sum;
+        }
+        
+        return c;
+    }
+    
     private readonly int[] _layer;                                    // the number of neurons in each layer
     private readonly float _alpha;                                    // hyper parameter - learning rate
     private readonly Func<Vector, Vector> _activationFunction;        // σ
@@ -54,19 +74,19 @@ public class NeuralNetwork
     private Matrix[] dE_dW;
     private Vector[] dE_db;
 
-    public NeuralNetwork(int[] layer, float learningRate, ActivationFunction activationFunction)
+    public NeuralNetwork(int[] layer, float learningRate, Activation activation)
     {
         _layer = layer;
         _alpha = learningRate;
         
-        switch (activationFunction)
+        switch (activation)
         {
-            case ActivationFunction.Relu:
+            case Activation.Relu:
                 _activationFunction = Relu;
                 _derivedActivationFunction = DerivedRelu;
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(activationFunction), activationFunction, null);
+                throw new ArgumentOutOfRangeException(nameof(activation), activation, null);
         }
         
         W = new Matrix[_layer.Length - 1];
@@ -116,8 +136,8 @@ public class NeuralNetwork
             i += 1;
         }
         
-        var z =  W[i + 1].T * h[i] + b[i + 1];
-        return z;
+        var z = W[i + 1].T * h[i] + b[i + 1];
+        return Softmax(z);
     }
 
     /*
@@ -132,13 +152,14 @@ public class NeuralNetwork
         var dE_dt = y - t;
         Vector dE_dh;
         
-        dE_dW[size + 1] = h[size].T * dE_dt.T;
+        dE_dW[size + 1] = h[size].T * dE_dt.T.T;
         dE_db[size + 1] = dE_dt;
+        size -= 1;
         for (var i = size; i > 0; i -= 1)
         {
-            dE_dh = W[i].T * dE_dt;
+            dE_dh = W[i + 1].T * dE_dt;
             dE_dt = dE_dh * _derivedActivationFunction(this.t[i]);
-            dE_dW[i] = h[i].T * dE_dt.T;
+            dE_dW[i] = h[i].T * dE_dt.T.T;
             dE_db[i] = dE_dt;
         }
         dE_dh = W[1] * dE_dt;

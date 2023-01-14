@@ -1,11 +1,18 @@
 using System;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [Serializable] public class Agent : MonoBehaviour
 {
     [Header("NeuralNetwork")]
     [SerializeField] private int[] layers;
     [SerializeField] private float learningRate;
+    
+    [SerializeField] private float _gamma;
+    [SerializeField] private float _epsilon;
+    [SerializeField] private float _epsilonMin;
+    [SerializeField] private float _epsilonDecay;
     
     [Header("Memory")]
     [SerializeField] private int capacity;
@@ -19,25 +26,40 @@ using UnityEngine;
     private void Start()
     {
         _memory = new Memory(capacity, batchSize);
-        _neuralNetwork = new NeuralNetwork(layers, learningRate, NeuralNetwork.ActivationFunction.Relu);
+        _neuralNetwork = new NeuralNetwork(layers, learningRate, NeuralNetwork.Activation.Relu);
     }
 
-    public Vector GetAction(Vector state)
+    public int GetAction(Vector state)
     {
-        var action = _neuralNetwork.ForwardPropagation(state);
-        return action;
-    }
-
-    public void Remember(Vector state, Vector action, float reward, Vector nextState)
-    {
+        if (Random.Range(0, 1) <= _epsilon)
+        {
+            return Random.Range(0, layers.Last());
+        }
         
+        var action = _neuralNetwork.ForwardPropagation(state);
+        return action.Argmax;
+    }
+
+    public void Remember(Vector state, int action, float reward, Vector nextState)
+    {
+        _memory.Append(state, action, reward, nextState);
     }
     
     public void Train()
     {
         foreach (var (state, action, reward, nextState) in _memory.GetBatch())
         {
-            _neuralNetwork.BackPropagation(state, nextState);
+            var target = _neuralNetwork.ForwardPropagation(state);
+            // var targetNext = _neuralNetwork.ForwardPropagation(nextState);
+            
+            target[action] = reward;
+            
+            _neuralNetwork.BackPropagation(state, target);
+        }
+        
+        if (_epsilon > _epsilonMin)
+        {
+            _epsilon *= _epsilonDecay;
         }
     }
 }

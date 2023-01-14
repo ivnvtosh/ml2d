@@ -20,6 +20,26 @@ public class Vector
         get => _data[i];
         set => _data[i] = value;
     }
+
+    public int Argmax
+    {
+        get
+        {
+            var max = _data[0];
+            var index = 0;
+
+            for (var i = 1; i < size; i += 1)
+            {
+                if (max < _data[i])
+                {
+                    max = _data[i];
+                    index = i;
+                }
+            }
+
+            return index;
+        }
+    }
     
     public Matrix T
     {
