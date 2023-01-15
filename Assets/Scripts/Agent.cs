@@ -42,7 +42,8 @@ using Random = UnityEngine.Random;
 
     public void Remember(Vector state, int action, float reward, Vector nextState)
     {
-        _memory.Append(state, action, reward, nextState);
+        var experience = (state, action, reward, nextState);
+        _memory.Append(experience);
     }
     
     public void Train()

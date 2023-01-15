@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 public class Memory
 {
     private (Vector state, int action, float reward, Vector nextState)[] _store;
@@ -15,7 +17,7 @@ public class Memory
         _everyNTimes = 4;
     }
     
-    public void Append(Vector state, int action, float reward, Vector nextState)
+    public void Append((Vector state, int action, float reward, Vector nextState) store)
     {
         if (_everyNTimes < 4)
         {
@@ -29,7 +31,7 @@ public class Memory
         }
         
         _everyNTimes = 0;
-        _store[_size] = (state, action, reward, nextState);
+        _store[_size] = store;
         _size += 1;
     }
     

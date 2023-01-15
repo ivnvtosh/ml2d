@@ -5,63 +5,6 @@ using System;
  */
 public class NeuralNetwork
 {
-    public enum Activation
-    {
-        Relu
-    }
-    private static float Relu(float t)
-    {
-        return t > 0 ? t : 0;
-    }
-    
-    private static float DerivedRelu(float t)
-    {
-        return t >= 0 ? 1 : 0;
-    }
-    
-    private static Vector Relu(Vector a)
-    {
-        var c = new Vector(a.size);
-        
-        for (var i = 0; i < a.size; i += 1)
-        { 
-            c[i] = Relu(a[i]);
-        }
-        
-        return c;
-    }
-    
-    private static Vector DerivedRelu(Vector a)
-    {
-        var c = new Vector(a.size);
-        
-        for (var i = 0; i < a.size; i += 1)
-        { 
-            c[i] = DerivedRelu(a[i]);
-        }
-        
-        return c;
-    }
-    
-    public static Vector Softmax(Vector a)
-    {
-        var c = new Vector(a.size);
-        var sum = 0.0f;
-        
-        for (var i = 0; i < a.size; i += 1)
-        {
-            c[i] = UnityEngine.Mathf.Exp(a[i]);
-            sum += c[i];
-        }
-
-        for (var i = 0; i < a.size; i += 1)
-        {
-            c[i] /= sum;
-        }
-        
-        return c;
-    }
-    
     private readonly int[] _layer;                                    // the number of neurons in each layer
     private readonly float _alpha;                                    // hyper parameter - learning rate
     private readonly Func<Vector, Vector> _activationFunction;        // σ
@@ -73,7 +16,12 @@ public class NeuralNetwork
     private Vector[] h;
     private Matrix[] dE_dW;
     private Vector[] dE_db;
-
+    
+    public enum Activation
+    {
+        Relu
+    }
+    
     public NeuralNetwork(int[] layer, float learningRate, Activation activation)
     {
         _layer = layer;
@@ -142,7 +90,6 @@ public class NeuralNetwork
 
     /*
      * BackPropagation (for short backward propagation of errors)
-     * 
      */
     public void BackPropagation(Vector x, Vector t)
     {
@@ -173,5 +120,58 @@ public class NeuralNetwork
             W[i] -= _alpha * dE_dW[i];
             b[i] -= _alpha * dE_db[i];
         }
+    }
+    
+    private static float Relu(float t)
+    {
+        return t > 0 ? t : 0;
+    }
+    
+    private static float DerivedRelu(float t)
+    {
+        return t >= 0 ? 1 : 0;
+    }
+    
+    private static Vector Relu(Vector a)
+    {
+        var c = new Vector(a.size);
+        
+        for (var i = 0; i < a.size; i += 1)
+        { 
+            c[i] = Relu(a[i]);
+        }
+        
+        return c;
+    }
+    
+    private static Vector DerivedRelu(Vector a)
+    {
+        var c = new Vector(a.size);
+        
+        for (var i = 0; i < a.size; i += 1)
+        { 
+            c[i] = DerivedRelu(a[i]);
+        }
+        
+        return c;
+    }
+    
+    private static Vector Softmax(Vector a)
+    {
+        var c = new Vector(a.size);
+        var sum = 0.0f;
+        
+        for (var i = 0; i < a.size; i += 1)
+        {
+            c[i] = UnityEngine.Mathf.Exp(a[i]);
+            sum += c[i];
+        }
+        
+        for (var i = 0; i < a.size; i += 1)
+        {
+            c[i] /= sum;
+        }
+        
+        return c;
     }
 }
