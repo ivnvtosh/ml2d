@@ -6,20 +6,20 @@ using Random = UnityEngine.Random;
 [Serializable] public class Agent : MonoBehaviour
 {
     [Header("NeuralNetwork")]
-    [SerializeField] private int[] layers;
-    [SerializeField] private float learningRate;
+    [SerializeField] private int[] layers;        // the number of layers and neurons in the perceptron
+    [SerializeField] private float learningRate;  // alpha - learning rate
     
-    [SerializeField] private float _gamma;
-    [SerializeField] private float _epsilon;
-    [SerializeField] private float _epsilonMin;
-    [SerializeField] private float _epsilonDecay;
+    [SerializeField] private float _gamma;        // discount - how much future states affect rewards
+    [SerializeField] private float _epsilon;      // chance of picking random action
+    [SerializeField] private float _epsilonMin;   // min chance value
+    [SerializeField] private float _epsilonDecay; // chance decay amount for each update
     
     [Header("Memory")]
-    [SerializeField] private int capacity;
-    [SerializeField] private int batchSize;
+    [SerializeField] private int capacity;        // memory capacity
+    [SerializeField] private int batchSize;       // 
     
-    private Memory _memory;
-    private NeuralNetwork _neuralNetwork;
+    private Memory _memory;                       // memory - array of past actions and rewards
+    private NeuralNetwork _neuralNetwork;         // neural network - multilayer perceptron
     
     private Vector2 position;
     
