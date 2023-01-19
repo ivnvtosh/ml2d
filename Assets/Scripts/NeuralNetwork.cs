@@ -54,10 +54,13 @@ public class NeuralNetwork
         }
     }
 
-    public void GoSetWb(Matrix[] W, Vector[] b)
+    public void LoadFromFile(string path)
     {
-        this.W = W;
-        this.b = b;
+        for (var i = 0; i < _layers.Length - 1; i += 1)
+        {
+            W[i] = new Matrix(path + "Weights_" + i + ".txt");
+            b[i] = new Vector(path + "Bias_" + i + ".txt");
+        }
     }
     
     /*
@@ -87,7 +90,8 @@ public class NeuralNetwork
         }
         
         var z = W[i + 1].T * h[i] + b[i + 1];
-        return Softmax(z);
+        return z;
+        // return Softmax(z);
     }
 
     /*

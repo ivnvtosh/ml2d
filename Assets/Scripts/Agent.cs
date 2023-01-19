@@ -31,7 +31,7 @@ using Random = UnityEngine.Random;
 
     public int GetAction(Vector state)
     {
-        if (Random.Range(0, 1) <= _epsilon)
+        if (Random.Range(0f, 1f) <= _epsilon)
         {
             return Random.Range(0, layers.Last());
         }
@@ -39,7 +39,7 @@ using Random = UnityEngine.Random;
         var action = _neuralNetwork.ForwardPropagation(state);
         return action.Argmax;
     }
-
+    
     public void Remember(Vector state, int action, float reward, Vector nextState)
     {
         var experience = (state, action, reward, nextState);
@@ -53,6 +53,7 @@ using Random = UnityEngine.Random;
             var target = _neuralNetwork.ForwardPropagation(state);
             // var targetNext = _neuralNetwork.ForwardPropagation(nextState);
             
+            // target[action] = reward + _gamma * targetNext[targetNext.Argmax];
             target[action] = reward;
             
             _neuralNetwork.BackPropagation(state, target);

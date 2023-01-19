@@ -11,38 +11,14 @@ namespace Tests.EditMode
             layers[0] = 2;
             layers[1] = 2;
             layers[2] = 1;
-            
             var neuralNetwork = new NeuralNetwork(layers, 0.05f, NeuralNetwork.Activation.Relu);
+            neuralNetwork.LoadFromFile("Assets/Tests/EditMode/NeuralNetwork_00/");
             var x = new Vector(new float[2] { 2f, 3f });
             var d = new Vector(new float[1] { 0.21f });
             
-            var W = new Matrix[2];
+            var y = neuralNetwork.ForwardPropagation(x);
             
-            W[0] = new Matrix(2, 2)
-            {
-                [0, 0] = 0.11f,
-                [0, 1] = 0.12f,
-                
-                [1, 0] = 0.21f,
-                [1, 1] = 0.08f,
-            };
-            
-            W[1] = new Matrix(2)
-            {
-                [0, 0] = 0.14f,
-                [1, 0] = 0.15f,
-            };
-            
-            var b = new Vector[2];
-            
-            b[0] = new Vector(new float[2] { 0.07f, 0.05f });
-            b[1] = new Vector(new float[1] { 0.0017f });
-            
-            neuralNetwork.GoSetWb(W, b);
-            
-            var z = neuralNetwork.ForwardPropagation(x);
-            
-            Assert.AreEqual(d, z);
+            Assert.AreEqual(d, y);
         }
         
         [Test]
@@ -52,42 +28,35 @@ namespace Tests.EditMode
             layers[0] = 2;
             layers[1] = 2;
             layers[2] = 1;
-            
             var neuralNetwork = new NeuralNetwork(layers, 0.05f, NeuralNetwork.Activation.Relu);
+            neuralNetwork.LoadFromFile("Assets/Tests/EditMode/NeuralNetwork_00/");
             var x = new Vector(new float[2] { 2f, 3f });
+            var t = new Vector(new float[1] { 1f });
             var d = new Vector(new float[1] { 0.32185965f });
             
-            var W = new Matrix[2];
-            
-            W[0] = new Matrix(2, 2)
-            {
-                [0, 0] = 0.11f,
-                [0, 1] = 0.12f,
-                
-                [1, 0] = 0.21f,
-                [1, 1] = 0.08f,
-            };
-            
-            W[1] = new Matrix(2)
-            {
-                [0, 0] = 0.14f,
-                [1, 0] = 0.15f,
-            };
-            
-            var b = new Vector[2];
-            
-            b[0] = new Vector(new float[2] { 0.07f, 0.05f });
-            b[1] = new Vector(new float[1] { 0.0017f });
-            
-            var t = new Vector(new float[1] { 1f });
-            
-            neuralNetwork.GoSetWb(W, b);
-            
             neuralNetwork.BackPropagation(x, t);
+            var y = neuralNetwork.ForwardPropagation(x);
             
-            var z = neuralNetwork.ForwardPropagation(x);
+            Assert.AreEqual(d, y);
+        }
+        
+        [Test]
+        public void ForwardPropagation_01()
+        {
+            var layers = new int[3];
+            layers[0] = 32;
+            layers[1] = 128;
+            layers[2] = 4;
+            var neuralNetwork = new NeuralNetwork(layers, 0.05f, NeuralNetwork.Activation.Relu);
+            neuralNetwork.LoadFromFile("Assets/Tests/EditMode/NeuralNetwork_01/");
+            var x = new Vector(new float[32] { 0.86f, 0.05f, 0.1f,  0.06f, 0.31f, 0.26f, 0.42f, 0.56f, 0.5f, 0.22f,
+                0.02f, 0.18f, 0.96f, 0.23f, 0.52f, 0.95f, 0.46f, 0.19f, 0.84f, 0.91f, 0.38f, 0.92f, 0.53f, 0.58f, 0.74f,
+                0.89f, 0.35f, 0.41f, 0.56f, 0.42f, 0.01f, 0.46f });
+            var d = new Vector(new float[4] { 512.69f, 486.03f, 472.04f, 494.63f });
             
-            Assert.AreEqual(d, z);
+            var y = neuralNetwork.ForwardPropagation(x);
+            
+            Assert.AreEqual(d, y);
         }
     }
 }

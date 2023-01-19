@@ -15,6 +15,23 @@ public class Vector
         _data = new float[size];
     }
     
+    // Parse
+    public Vector(string path)
+    {
+        var reader = new System.IO.StreamReader(path);
+        var data = reader.ReadToEnd();
+        var lines = data.Split("\n");
+        reader.Close();
+
+        size = int.Parse(lines[0]);
+        _data = new float[size];
+
+        for (var i = 0; i < size; i += 1)
+        {
+            _data[i] = float.Parse(lines[i + 1]);
+        }
+    }
+    
     public float this[int i]
     {
         get => _data[i];

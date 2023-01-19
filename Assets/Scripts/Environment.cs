@@ -25,6 +25,8 @@ using Random = UnityEngine.Random;
     private GameObject _agent;
     private GameObject _reward;
     
+    private float pastDistance = 3f;
+    
     public Vector Reset()
     {
         _sensor = new Sensor(numOfSensors);
@@ -51,17 +53,18 @@ using Random = UnityEngine.Random;
         };
         
         rb.MovePosition(rb.position + direction * agentSpeed * Time.fixedDeltaTime);
-
-        var position = rb.position;
-        var state = _sensor.GetData(position);
         
-        var reward = -0.1f;
+        var position = rb.position;
+
+        float reward;
         
         var mixX = position.x - 0.25;
         var maxX = position.x + 0.25;
         var minY = position.y - 0.25;
         var maxY = position.y + 0.25;
-
+        
+        var distance = Vector2.Distance(position, _reward.transform.position);
+        
         if (mixX <= _reward.transform.position.x && maxX >= _reward.transform.position.x &&
             minY <= _reward.transform.position.y && maxY >= _reward.transform.position.y)
         {
@@ -73,13 +76,23 @@ using Random = UnityEngine.Random;
             Fail();
             reward = -10f;
         }
-
+        else if (distance < pastDistance)
+        {
+            reward = +1f;
+        }
+        else
+        {
+            reward = -1f;
+        }
+        
+        pastDistance = distance;
+        
+        var state = _sensor.GetData(position);
         return (state, reward);
     }
     
     public void Success()
     {
-        Debug.Log("success");
         _success += 1;
         _reward.transform.position = new Vector3(Random.Range(-3, +3),  Random.Range(-3f, 3f));
         _timeExpired = Time.time + timeout;
@@ -87,10 +100,9 @@ using Random = UnityEngine.Random;
     
     private void Fail()
     {
-        Debug.Log("fail");
         _fail += 1;
-        _agent.transform.position = new Vector3(Random.Range(-0.5f, +0.5f),  Random.Range(-0.5f, 0.5f));
-        _reward.transform.position = new Vector3(Random.Range(-0.5f, +0.5f),  Random.Range(-0.5f, 0.5f));
+        _agent.transform.position = new Vector3(Random.Range(-3f, +3f),  Random.Range(-3f, +3f));
+        _reward.transform.position = new Vector3(Random.Range(-3f, +3f),  Random.Range(-3f, +3f));
         _timeExpired = Time.time + timeout;
     }
 }

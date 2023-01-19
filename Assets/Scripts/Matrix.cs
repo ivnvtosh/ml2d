@@ -11,6 +11,34 @@ public class Matrix
         this.n = n;
     }
     
+    // Parse
+    public Matrix(string path)
+    {
+        var reader = new System.IO.StreamReader(path);
+        var data = reader.ReadToEnd();
+        var lines = data.Split("\n");
+        reader.Close();
+
+        m = int.Parse(lines[0]);
+        n = int.Parse(lines[1]);
+        _data = new float[m, n];
+        
+        for (var i = 0; i < m; i += 1)
+        {
+            var words = lines[i + 2].Split(" ");
+            var k = 0;
+            for (var j = 0; j < n; j += 1)
+            {
+                while (words[j + k] == "")
+                {
+                    k += 1;
+                }
+                
+                _data[i, j] = float.Parse(words[j + k]);
+            }
+        }
+    }
+    
     public float this[int i, int j]
     {
         get => _data[i, j];
