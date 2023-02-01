@@ -58,10 +58,10 @@ using Random = UnityEngine.Random;
 
         float reward;
         
-        var mixX = position.x - 0.25;
-        var maxX = position.x + 0.25;
-        var minY = position.y - 0.25;
-        var maxY = position.y + 0.25;
+        var mixX = position.x - 0.5;
+        var maxX = position.x + 0.5;
+        var minY = position.y - 0.5;
+        var maxY = position.y + 0.5;
         
         var distance = Vector2.Distance(position, _reward.transform.position);
         
