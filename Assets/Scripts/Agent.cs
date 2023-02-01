@@ -51,10 +51,10 @@ using Random = UnityEngine.Random;
         foreach (var (state, action, reward, nextState) in _memory.GetBatch())
         {
             var target = _neuralNetwork.ForwardPropagation(state);
-            // var targetNext = _neuralNetwork.ForwardPropagation(nextState);
+            var targetNext = _neuralNetwork.ForwardPropagation(nextState);
             
-            // target[action] = reward + _gamma * targetNext[targetNext.Argmax];
-            target[action] = reward;
+            target[action] = reward + _gamma * targetNext[targetNext.Argmax];
+            // target[action] = reward;
             
             _neuralNetwork.BackPropagation(state, target);
         }

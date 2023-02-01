@@ -18,7 +18,7 @@ public class Sensor
     public Sensor(int numOfSensors)
     {
         _numOfSensors = numOfSensors;
-        _data = new Vector(numOfSensors);
+        _data = new Vector(numOfSensors / 2);
         _rays = new Ray2D[numOfSensors];
         _hits = new RaycastHit2D[numOfSensors];
         _directions = new Vector2[numOfSensors];
@@ -36,6 +36,7 @@ public class Sensor
     {
         _origin = position;
         Ray();
+        CreateData();
         DrawRay();
         return _data;
     }
@@ -46,8 +47,25 @@ public class Sensor
         {
             _ray.direction = _directions[i];
             _hits[i] = Physics2D.Raycast(_origin + _ray.direction * 0.3f, _ray.direction, 10);
-            _data[i] = _hits[i].distance;
             _rays[i] = _ray;
+        }
+    }
+    
+    private void CreateData()
+    {
+        var i = 0;
+        for (var j = 0; j < _numOfSensors; j += 2)
+        {
+            if (_hits[j].collider == null)
+            {
+                _data[i] = _hits[j + 1].distance;
+            }
+            else
+            {
+                _data[i] = _hits[j].distance;
+            }
+            
+            i += 1;
         }
     }
     
